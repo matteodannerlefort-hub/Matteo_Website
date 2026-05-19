@@ -1,0 +1,172 @@
+:root {
+  --background: #f3f7ff;
+  --card: #ffffff;
+  --primary: #2f5bd2;
+  --accent: #e7eeff;
+  --success: #1f8f4d;
+  --danger: #b42318;
+  --text: #1c2330;
+  --muted: #5d6b82;
+  --shadow: 0 10px 25px rgba(47, 91, 210, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(180deg, #ecf3ff 0%, var(--background) 100%);
+  color: var(--text);
+}
+
+.app-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: #1f3f9c;
+  color: #fff;
+  padding: 1.4rem 1rem;
+}
+
+.sidebar h1 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.tagline {
+  margin: 0.5rem 0 1.25rem;
+  color: #d8e4ff;
+}
+
+nav {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.nav-btn {
+  width: 100%;
+  border: 1px solid #6f8ef0;
+  background: #3358c4;
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.7rem 0.75rem;
+  text-align: left;
+  font-size: 0.96rem;
+  cursor: pointer;
+}
+
+.nav-btn:hover,
+.nav-btn:focus-visible {
+  background: #3f66d0;
+}
+
+.nav-btn.active {
+  background: #fff;
+  color: #1f3f9c;
+  border-color: #fff;
+  font-weight: 600;
+}
+
+.main-content {
+  padding: 1rem;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 1rem 1.2rem 1.35rem;
+  max-width: 950px;
+}
+
+.panel {
+  display: none;
+}
+
+.panel.active {
+  display: block;
+}
+
+.card h2 {
+  margin-top: 0;
+  color: var(--primary);
+}
+
+.section-intro {
+  color: var(--muted);
+  margin-top: -0.25rem;
+  margin-bottom: 1rem;
+}
+
+.highlight {
+  background: var(--accent);
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.homework-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.homework-item {
+  background: #f9fbff;
+  border: 1px solid #dde6ff;
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.homework-item strong {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.status-pill {
+  display: inline-block;
+  font-size: 0.82rem;
+  padding: 0.24rem 0.5rem;
+  border-radius: 999px;
+  color: #fff;
+}
+
+.status-pill.done {
+  background: var(--success);
+}
+
+.status-pill.missing {
+  background: var(--danger);
+}
+
+@media (max-width: 860px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    padding: 1rem;
+  }
+
+  nav {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 540px) {
+  .card {
+    padding: 1rem;
+  }
+
+  nav {
+    grid-template-columns: 1fr;
+  }
+}
