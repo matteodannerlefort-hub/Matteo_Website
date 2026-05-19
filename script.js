@@ -22,6 +22,8 @@ const assignments = [
 const studentList = document.getElementById("student-homework-list");
 const parentList = document.getElementById("parent-status-list");
 const nextAssignmentEl = document.getElementById("next-assignment");
+const navButtons = document.querySelectorAll(".nav-btn");
+const panels = document.querySelectorAll(".panel");
 
 const now = new Date();
 const sortedAssignments = [...assignments].sort(
@@ -64,10 +66,23 @@ sortedAssignments.forEach((assignment) => {
     <span class="status-pill ${assignment.completed ? "done" : "missing"}">
       ${assignment.completed ? "Completed" : "Not completed"}
     </span>
+    ${isWithin24Hours && !assignment.completed ? '<p><small>Parent alert: Assignment due within 24 hours and still incomplete.</small></p>' : ""}
     ${isWithin24Hours && !assignment.completed ? '<p><small>Parent alert: Assignment due within 24 hours and still incomplete.</small></p>' : ''}
   `;
 
   parentList.appendChild(parentItem);
+});
+
+navButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const target = button.dataset.target;
+
+    navButtons.forEach((btn) => btn.classList.remove("active"));
+    panels.forEach((panel) => panel.classList.remove("active"));
+
+    button.classList.add("active");
+    document.getElementById(target).classList.add("active");
+  });
 });
 
 function formatDate(dateString) {

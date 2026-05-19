@@ -21,6 +21,59 @@ body {
   color: var(--text);
 }
 
+.app-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: #1f3f9c;
+  color: #fff;
+  padding: 1.4rem 1rem;
+}
+
+.sidebar h1 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.tagline {
+  margin: 0.5rem 0 1.25rem;
+  color: #d8e4ff;
+}
+
+nav {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.nav-btn {
+  width: 100%;
+  border: 1px solid #6f8ef0;
+  background: #3358c4;
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.7rem 0.75rem;
+  text-align: left;
+  font-size: 0.96rem;
+  cursor: pointer;
+}
+
+.nav-btn:hover,
+.nav-btn:focus-visible {
+  background: #3f66d0;
+}
+
+.nav-btn.active {
+  background: #fff;
+  color: #1f3f9c;
+  border-color: #fff;
+  font-weight: 600;
+}
+
+.main-content {
+  padding: 1rem;
 .site-header {
   text-align: center;
   padding: 2.25rem 1rem 1.25rem;
@@ -50,6 +103,15 @@ body {
   border-radius: 12px;
   box-shadow: var(--shadow);
   padding: 1rem 1.2rem 1.35rem;
+  max-width: 950px;
+}
+
+.panel {
+  display: none;
+}
+
+.panel.active {
+  display: block;
 }
 
 .card h2 {
@@ -107,8 +169,26 @@ body {
   background: var(--danger);
 }
 
+@media (max-width: 860px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    padding: 1rem;
+  }
+
+  nav {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media (max-width: 540px) {
   .card {
     padding: 1rem;
+  }
+
+  nav {
+    grid-template-columns: 1fr;
   }
 }

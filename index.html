@@ -7,6 +7,36 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="app-layout">
+    <aside class="sidebar" aria-label="Dashboard navigation">
+      <h1>DontForgetYourHomework.co.uk</h1>
+      <p class="tagline">Choose your dashboard</p>
+      <nav>
+        <button class="nav-btn active" data-target="student-panel" id="student-nav-btn">Student Dashboard</button>
+        <button class="nav-btn" data-target="parent-panel" id="parent-nav-btn">Parent Dashboard</button>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <section class="card panel active" id="student-panel" aria-labelledby="student-dashboard-title">
+        <h2 id="student-dashboard-title">Student Dashboard</h2>
+        <p class="section-intro">Your next homework deadlines and reminders are shown below.</p>
+
+        <div class="highlight" id="next-assignment"></div>
+
+        <h3>Upcoming Homework</h3>
+        <ul id="student-homework-list" class="homework-list"></ul>
+      </section>
+
+      <section class="card panel" id="parent-panel" aria-labelledby="parent-dashboard-title">
+        <h2 id="parent-dashboard-title">Parent Dashboard</h2>
+        <p class="section-intro">See what your child has and hasn't completed in the last 24 hours before each due date.</p>
+
+        <h3>Completion Status</h3>
+        <ul id="parent-status-list" class="homework-list"></ul>
+      </section>
+    </main>
+  </div>
   <header class="site-header">
     <h1>DontForgetYourHomework.co.uk</h1>
     <p class="tagline">Helping students stay on track and keeping parents informed.</p>
