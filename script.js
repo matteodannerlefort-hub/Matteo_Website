@@ -67,6 +67,7 @@ sortedAssignments.forEach((assignment) => {
       ${assignment.completed ? "Completed" : "Not completed"}
     </span>
     ${isWithin24Hours && !assignment.completed ? '<p><small>Parent alert: Assignment due within 24 hours and still incomplete.</small></p>' : ""}
+    ${isWithin24Hours && !assignment.completed ? '<p><small>Parent alert: Assignment due within 24 hours and still incomplete.</small></p>' : ''}
   `;
 
   parentList.appendChild(parentItem);
