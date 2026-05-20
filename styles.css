@@ -74,6 +74,28 @@ nav {
 
 .main-content {
   padding: 1rem;
+.site-header {
+  text-align: center;
+  padding: 2.25rem 1rem 1.25rem;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  color: var(--primary);
+}
+
+.tagline {
+  margin-top: 0.65rem;
+  color: var(--muted);
+}
+
+.dashboard-grid {
+  width: min(1100px, 92%);
+  margin: 0 auto 2rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .card {
@@ -198,11 +220,16 @@ nav {
 @media (max-width: 720px) {
   nav {
     grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 540px) {
   .card {
     padding: 1rem;
+  }
+
+  nav {
+    grid-template-columns: 1fr;
   }
 }
