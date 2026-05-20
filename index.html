@@ -14,6 +14,7 @@
       <nav>
         <button class="nav-btn active" data-target="student-panel" id="student-nav-btn">Student Dashboard</button>
         <button class="nav-btn" data-target="parent-panel" id="parent-nav-btn">Parent Dashboard</button>
+        <button class="nav-btn" data-target="teacher-panel" id="teacher-nav-btn">Teacher Dashboard</button>
       </nav>
     </aside>
 
@@ -35,6 +36,30 @@
         <h3>Completion Status</h3>
         <ul id="parent-status-list" class="homework-list"></ul>
       </section>
+
+      <section class="card panel" id="teacher-panel" aria-labelledby="teacher-dashboard-title">
+        <h2 id="teacher-dashboard-title">Teacher Dashboard</h2>
+        <p class="section-intro">Set homework with a topic and due date so students and parents can see it immediately.</p>
+
+        <form id="teacher-homework-form" class="teacher-form">
+          <label>
+            Subject
+            <input type="text" id="subject-input" required placeholder="e.g. Geography" />
+          </label>
+          <label>
+            Homework topic
+            <input type="text" id="topic-input" required placeholder="e.g. River formations" />
+          </label>
+          <label>
+            Due date and time
+            <input type="datetime-local" id="due-date-input" required />
+          </label>
+          <button type="submit" class="submit-btn">Set Homework</button>
+          <p id="teacher-form-message" class="form-message" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+  </div>
     </main>
   </div>
   <header class="site-header">
