@@ -169,6 +169,32 @@ nav {
   background: var(--danger);
 }
 
+
+.submission-controls {
+  margin-top: 0.6rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.checkbox-label {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  font-weight: 600;
+}
+
+.link-label {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.link-input {
+  border: 1px solid #c6d4ff;
+  border-radius: 8px;
+  padding: 0.55rem;
+  font-size: 0.9rem;
+  width: 100%;
+}
 .teacher-form {
   display: grid;
   gap: 0.9rem;
