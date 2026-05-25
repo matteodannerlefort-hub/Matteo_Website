@@ -1,26 +1,4 @@
-const assignments = [
-  {
-    subject: "Mathematics",
-    title: "Algebra Worksheet (Equations & Inequalities)",
-    dueDate: "2026-05-21T09:00:00",
-    dueDate: "2026-05-20T09:00:00",
-    completed: true
-  },
-  {
-    subject: "English",
-    title: "Essay plan on 'An Inspector Calls'",
-    dueDate: "2026-05-22T09:00:00",
-    dueDate: "2026-05-21T09:00:00",
-    completed: false
-  },
-  {
-    subject: "Science",
-    title: "Revision questions on electricity",
-    dueDate: "2026-05-23T09:00:00",
-    dueDate: "2026-05-22T09:00:00",
-    completed: true
-  }
-];
+const assignments = [];
 
 const studentList = document.getElementById("student-homework-list");
 const parentList = document.getElementById("parent-status-list");
