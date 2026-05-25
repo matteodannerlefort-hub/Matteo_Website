@@ -41,7 +41,8 @@ teacherForm.addEventListener("submit", (event) => {
     title,
     dueDate,
     completed: false,
-    submissionLink: ""
+    submissionLink: "",
+    submissionPdfName: ""
   });
 
   teacherForm.reset();
@@ -93,6 +94,15 @@ function renderDashboards() {
           value="${assignment.submissionLink || ""}"
           data-link-assignment-id="${assignment.id}"
         >
+        <label class="link-label" for="pdf-${assignment.id}">Upload completed PDF</label>
+        <input
+          id="pdf-${assignment.id}"
+          class="pdf-input"
+          type="file"
+          accept="application/pdf,.pdf"
+          data-pdf-assignment-id="${assignment.id}"
+        >
+        <small class="pdf-status">${assignment.submissionPdfName ? `PDF uploaded: ${assignment.submissionPdfName}` : "No PDF uploaded yet."}</small>
       </div>
     `;
     studentList.appendChild(studentItem);
@@ -107,6 +117,10 @@ function renderDashboards() {
       ? `<p><small>Submitted work: <a href="${assignment.submissionLink}" target="_blank" rel="noopener noreferrer">Open link</a></small></p>`
       : '<p><small>No submission link yet.</small></p>';
 
+    const submissionPdfMarkup = assignment.submissionPdfName
+      ? `<p><small>Submitted PDF: ${assignment.submissionPdfName}</small></p>`
+      : '<p><small>No submitted PDF yet.</small></p>';
+
     parentItem.innerHTML = `
       <strong>${assignment.subject}</strong>
       Topic: ${assignment.title}<br>
@@ -115,6 +129,7 @@ function renderDashboards() {
         ${assignment.completed ? "Completed" : "Not completed"}
       </span>
       ${submissionLinkMarkup}
+      ${submissionPdfMarkup}
       ${isWithin24Hours && !assignment.completed ? '<p><small>Parent alert: Assignment due within 24 hours and still incomplete.</small></p>' : ""}
     `;
 
@@ -134,9 +149,9 @@ function wireStudentAssignmentControls() {
         return;
       }
 
-      if (!assignment.submissionLink.trim()) {
+      if (!assignment.submissionLink.trim() && !assignment.submissionPdfName) {
         event.target.checked = false;
-        alert("Please add a completed work link before ticking this homework as completed.");
+        alert("Please add a completed work link or upload a completed PDF before ticking this homework as completed.");
         return;
       }
 
@@ -157,6 +172,28 @@ function wireStudentAssignmentControls() {
       assignment.submissionLink = event.target.value.trim();
 
       if (!assignment.submissionLink) {
+        if (!assignment.submissionPdfName) {
+          assignment.completed = false;
+        }
+      }
+
+      renderDashboards();
+    });
+  });
+
+  const pdfInputs = studentList.querySelectorAll("input[type='file'][data-pdf-assignment-id]");
+  pdfInputs.forEach((input) => {
+    input.addEventListener("change", (event) => {
+      const assignmentId = event.target.dataset.pdfAssignmentId;
+      const assignment = assignments.find((item) => item.id === assignmentId);
+      if (!assignment) {
+        return;
+      }
+
+      const selectedFile = event.target.files && event.target.files[0];
+      assignment.submissionPdfName = selectedFile ? selectedFile.name : "";
+
+      if (!assignment.submissionPdfName && !assignment.submissionLink.trim()) {
         assignment.completed = false;
       }
 
